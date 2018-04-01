@@ -55,6 +55,11 @@ namespace business.ui
 			List<Subject> buffer = new List<Subject>();
 			Serializator.ReadFile(fileName, ref buffer);
 
+			// reload list
+			listView1.Items.Clear();
+			businesMens = new List<Subject>();
+			countElements = 0;
+
 			foreach (var v in buffer)
 				addToViewList(v);
 

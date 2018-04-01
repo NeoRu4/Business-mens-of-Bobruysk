@@ -66,7 +66,6 @@
 			this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
 			this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.listView1.FullRowSelect = true;
-			this.listView1.GridLines = true;
 			this.listView1.Location = new System.Drawing.Point(14, 13);
 			this.listView1.MultiSelect = false;
 			this.listView1.Name = "listView1";
