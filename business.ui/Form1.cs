@@ -16,7 +16,12 @@ namespace business.ui
 		private void addToViewList(Subject sbj)
 		{
 			businesMens.Add(sbj);
-			listView1.Items.Add(new ListViewItem(new string[] { sbj.ITaxNum.ToString(), sbj.Name, sbj.StartDate.ToString("dd.MM.yyyy") }));
+			listView1.Items.Add(new ListViewItem(new string[] {
+				sbj.ITaxNum.ToString(),
+				sbj.Name,
+				sbj.StartDate.ToString("dd.MM.yyyy"),
+				sbj.TaxType.ToString()
+			}));
 			countElements++;
 		}
 
@@ -35,9 +40,9 @@ namespace business.ui
 
 
 			listView1.Columns.Add("1", "ИНН", 100);
-			listView1.Columns.Add("2", "ФИО",250);
+			listView1.Columns.Add("2", "ФИО",200);
 			listView1.Columns.Add("3", "дата регестрации", 130);
-
+			listView1.Columns.Add("4", "налог", 130);
 			button3.Enabled = false;
 
 		}
@@ -80,20 +85,27 @@ namespace business.ui
 
 		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			button3.Enabled = true;
+			if (listView1.SelectedItems.Count > 0 && listView1.SelectedItems[0]!= null)
+				button3.Enabled = true;
+			else
+				button3.Enabled = false;
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			var id = listView1.SelectedItems[0].Index;
-			var inforow = new addInfo(businesMens[id]);
-			var dialog = inforow.ShowDialog(this);
-			if (dialog == DialogResult.OK)
-			{
-				businesMens[id] = inforow.mainSubject;
-				listView1.Items[id] = new ListViewItem(new string[] { businesMens[id].ITaxNum.ToString(), businesMens[id].Name, businesMens[id].StartDate.ToString("dd.MM.yyyy") });
-			}
-
+				var id = listView1.SelectedItems[0].Index;
+				var inforow = new addInfo(businesMens[id]);
+				var dialog = inforow.ShowDialog(this);
+				if (dialog == DialogResult.OK)
+				{
+					businesMens[id] = inforow.mainSubject;
+					listView1.Items[id] = new ListViewItem(new string[] {
+						businesMens[id].ITaxNum.ToString(),
+						businesMens[id].Name,
+						businesMens[id].StartDate.ToString("dd.MM.yyyy"),
+						businesMens[id].TaxType.ToString()
+					});
+				}
 		}
 
 		private void button4_Click(object sender, EventArgs e)
