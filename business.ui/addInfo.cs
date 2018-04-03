@@ -40,6 +40,7 @@ namespace business.ui
 					(TaxTypes.ЕНВД).ToString(),
 				},
 				SelectedIndex = (object)info.TaxType != null ? (int)info.TaxType : -1,
+				DropDownStyle = ComboBoxStyle.DropDownList,
 			});
 			mainSubject = info;
 
@@ -81,7 +82,7 @@ namespace business.ui
 
 			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || !Subject.IntCorrect(INN.textBox.Text) || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
 			{
-				for (int X = 1; X <= 24; X++)
+				for (int X = 1; X <= 28; X++)
 				{
 					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 6);
 					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l * 25), buttonOK.Location.Y);
