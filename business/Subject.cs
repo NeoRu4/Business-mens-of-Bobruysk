@@ -39,10 +39,28 @@ namespace business
 		{
 			string[] nubmers = str.Split(',');
 
+			int num;
 			Activities.Clear();
 			foreach (var n in nubmers)
-				Activities.Add(Convert.ToInt32(n));
+				if ((num = Convert.ToInt32(n))!=0)
+					Activities.Add(num);
 		}
+
+		public static bool DateCorrect(string dateString)
+		{
+			bool dateCorrect = true;
+			if (dateString == "") { return dateCorrect; }
+			try
+			{
+				Convert.ToDateTime(dateString);
+			}
+			catch
+			{
+				dateCorrect = false;
+			}
+			return dateCorrect;
+		}
+
 	}
 
 	public enum TaxTypes

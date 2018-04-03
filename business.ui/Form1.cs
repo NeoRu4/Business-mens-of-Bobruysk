@@ -116,6 +116,7 @@ namespace business.ui
 		private void button4_Click(object sender, EventArgs e)
 		{
 			Serializator.WriteFile(CurFileName, businesMens);
+			
 			MessageBox.Show(CurFileName+" сохранён", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 		}
 

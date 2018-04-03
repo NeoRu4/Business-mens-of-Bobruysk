@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+
 
 namespace business.ui
 {
@@ -20,6 +16,7 @@ namespace business.ui
 		private InfoPlate DATEREGIST;
 		private InfoPlate OECVED;
 		private ComboBox TAX;
+		private Button buttonOK;
 
 		private void addFunc(Subject info)
 		{
@@ -44,39 +41,70 @@ namespace business.ui
 				},
 				SelectedIndex = (object)info.TaxType != null ? (int)info.TaxType : -1,
 			});
-
-
 			mainSubject = info;
+
+			buttonOK = new Button()
+			{
+				Size = new Size(360, 25),
+				Location = new Point(Width/2 - Size.Width/3, Height - Height/5),
+				Anchor = AnchorStyles.Bottom,
+				Text = "продолжить",
+			};
+			buttonOK.Click += buttonOK_Click;
+			Controls.Add(buttonOK);
 		}
 
 		public addInfo(Subject info)
 		{
-			InitializeComponent();
 			addFunc(info);
 		}
 
 		public addInfo()
 		{
-			InitializeComponent();
 			Subject info = new Subject();
 			addFunc(info);
 		}
 
 		private void addInfo_Load(object sender, EventArgs e)
 		{
-
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private int delay = 32;
+		private DateTime time = DateTime.Now;
+		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			mainSubject.Name = FIO.textBox.Text;
-			mainSubject.ITaxNum = Convert.ToInt32(INN.textBox.Text);
-			mainSubject.StartDate = Convert.ToDateTime(DATEREGIST.textBox.Text);
-			mainSubject.ActivitiesFromString(OECVED.textBox.Text);
-			mainSubject.TaxType = (TaxTypes)TAX.SelectedIndex;
+			//задержка нажатия
+			if (DateTime.Now > time)
+				time = DateTime.Now.AddSeconds(2.5);
+			else
+				return;
 
-			this.DialogResult = DialogResult.OK;
-			this.Close();
+			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
+			{
+				for (int X = 0; X < 35; X++)
+				{
+					var l = Math.Sin(X * 1.2) * Math.Pow(Math.E, -(X / 12));
+					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l * 25), buttonOK.Location.Y);
+					buttonOK.Update();
+					Thread.Sleep(delay);
+
+					buttonOK.Location = new Point(buttonOK.Location.X - Convert.ToInt32(l * 25), buttonOK.Location.Y);
+					buttonOK.Update();
+				}
+			}
+			else
+			{
+				mainSubject.Name = FIO.textBox.Text;
+				mainSubject.ITaxNum = Convert.ToInt32(INN.textBox.Text);
+				mainSubject.StartDate = Convert.ToDateTime(DATEREGIST.textBox.Text);
+				mainSubject.ActivitiesFromString(OECVED.textBox.Text);
+				mainSubject.TaxType = (TaxTypes)TAX.SelectedIndex;
+
+				this.DialogResult = DialogResult.OK;
+				this.Dispose();
+
+			}
+
 		}
 	}
 
