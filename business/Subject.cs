@@ -39,17 +39,18 @@ namespace business
 		{
 			string[] nubmers = str.Split(',');
 
-			int num;
 			Activities.Clear();
 			foreach (var n in nubmers)
-				if ((num = Convert.ToInt32(n))!=0)
-					Activities.Add(num);
+				if (IntCorrect(n))
+					Activities.Add(Convert.ToInt32(n));
 		}
 
 		public static bool DateCorrect(string dateString)
 		{
+			if (dateString == "")
+				return true;
+
 			bool dateCorrect = true;
-			if (dateString == "") { return dateCorrect; }
 			try
 			{
 				Convert.ToDateTime(dateString);
@@ -59,6 +60,23 @@ namespace business
 				dateCorrect = false;
 			}
 			return dateCorrect;
+		}
+
+		public static bool IntCorrect(string str)
+		{
+			if (str == "")
+				return false;
+
+			bool iscorrect = true;
+			try
+			{
+				Convert.ToInt32(str);
+			}
+			catch
+			{
+				iscorrect = false;
+			}
+			return iscorrect;
 		}
 
 	}

@@ -79,7 +79,7 @@ namespace business.ui
 			else
 				return;
 
-			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
+			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || !Subject.IntCorrect(INN.textBox.Text) || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
 			{
 				for (int X = 0; X < 35; X++)
 				{
