@@ -69,7 +69,7 @@ namespace business.ui
 		{
 		}
 
-		private int delay = 32;
+		private int delay = 17;
 		private DateTime time = DateTime.Now;
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
@@ -81,9 +81,9 @@ namespace business.ui
 
 			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || !Subject.IntCorrect(INN.textBox.Text) || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
 			{
-				for (int X = 0; X < 35; X++)
+				for (int X = 1; X <= 24; X++)
 				{
-					var l = Math.Sin(X * 1.2) * Math.Pow(Math.E, -(X / 12));
+					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 6);
 					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l * 25), buttonOK.Location.Y);
 					buttonOK.Update();
 					Thread.Sleep(delay);
