@@ -70,26 +70,26 @@ namespace business.ui
 		{
 		}
 
-		private int delay = 17;
+		private int delay = 12;
 		private DateTime time = DateTime.Now;
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			//задержка нажатия
 			if (DateTime.Now > time)
-				time = DateTime.Now.AddSeconds(2.5);
+				time = DateTime.Now.AddSeconds(1);
 			else
 				return;
 
 			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || !Subject.IntCorrect(INN.textBox.Text) || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
 			{
-				for (int X = 1; X <= 28; X++)
+				for (int X = 1; X <= 68; X++)
 				{
-					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 6);
-					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l * 25), buttonOK.Location.Y);
+					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 10) * 35;
+					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l), buttonOK.Location.Y);
 					buttonOK.Update();
 					Thread.Sleep(delay);
 
-					buttonOK.Location = new Point(buttonOK.Location.X - Convert.ToInt32(l * 25), buttonOK.Location.Y);
+					buttonOK.Location = new Point(buttonOK.Location.X - Convert.ToInt32(l), buttonOK.Location.Y);
 					buttonOK.Update();
 				}
 			}

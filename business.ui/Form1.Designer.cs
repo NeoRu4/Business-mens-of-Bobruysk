@@ -34,6 +34,7 @@
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -74,6 +75,7 @@
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
 			this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+			this.listView1.MouseEnter += new System.EventHandler(this.listView1_Update);
 			// 
 			// button4
 			// 
@@ -95,11 +97,22 @@
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(615, 245);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(74, 15);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "кол-во ип: 0";
+			this.label1.Click += new System.EventHandler(this.label1_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(745, 272);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.listView1);
@@ -113,6 +126,7 @@
 			this.Text = "Индивидуальные предприниматели Бобруйска";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -123,6 +137,7 @@
 		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Label label1;
 	}
 }
 

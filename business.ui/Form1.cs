@@ -38,7 +38,6 @@ namespace business.ui
 			openFileDialog1.Filter = "Файл базы (*.bu)|*.bu";
 			openFileDialog1.InitialDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-
 			listView1.Columns.Add("1", "ИНН", 100);
 			listView1.Columns.Add("2", "ФИО",200);
 			listView1.Columns.Add("3", "дата регестрации", 130);
@@ -96,6 +95,11 @@ namespace business.ui
 				button3.Enabled = false;
 		}
 
+		private void listView1_Update(object sender, EventArgs e)
+		{
+			label1.Text = "кол-во ип: " + businesMens.Count;
+		}
+
 		private void button3_Click(object sender, EventArgs e)
 		{
 				var id = listView1.SelectedItems[0].Index;
@@ -116,10 +120,12 @@ namespace business.ui
 		private void button4_Click(object sender, EventArgs e)
 		{
 			Serializator.WriteFile(CurFileName, businesMens);
-			
 			MessageBox.Show(CurFileName+" сохранён", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 		}
 
+		private void label1_Click(object sender, EventArgs e)
+		{
 
+		}
 	}
 }
