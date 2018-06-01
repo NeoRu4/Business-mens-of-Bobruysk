@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+
 
 namespace business
 {
 	public class Subject
 	{
 		//ИНН
+		[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ITaxNum { get; set; }
 
 		//ФИО предпренимателя
@@ -16,7 +20,8 @@ namespace business
 		public DateTime StartDate { get; set; }
 
 		//ОКВЭД
-		public List<int> Activities { get; set; }
+		public Collection<ActivitiesClass> Activities { get; set; }
+
 		//тип налогообложения
 		public TaxTypes TaxType { get; set; }
 
@@ -25,7 +30,7 @@ namespace business
 			ITaxNum = 0;
 			Name = "";
 			StartDate = DateTime.Now;
-			Activities = new List<int>();
+			Activities = new Collection<ActivitiesClass>();
 			TaxType = new TaxTypes();
 		}
 
@@ -42,7 +47,7 @@ namespace business
 			Activities.Clear();
 			foreach (var n in nubmers)
 				if (IntCorrect(n))
-					Activities.Add(Convert.ToInt32(n));
+					Activities.Add(new ActivitiesClass { id = Convert.ToInt32(n) });
 		}
 
 		public static bool DateCorrect(string dateString)

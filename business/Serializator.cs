@@ -23,5 +23,10 @@ namespace business
 			}
 		}
 
+		public static void ReadFileIO<T>(Stream file, ref List<T> data)
+		{
+			data = (List<T>)new XmlSerializer(typeof(List<T>)).Deserialize(file);
+		}
+
 	}
 }

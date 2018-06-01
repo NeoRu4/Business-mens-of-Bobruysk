@@ -76,15 +76,15 @@ namespace business.ui
 		{
 			//задержка нажатия
 			if (DateTime.Now > time)
-				time = DateTime.Now.AddSeconds(1);
+				time = DateTime.Now.AddSeconds(2);
 			else
 				return;
 
 			if (FIO.textBox.Text.Length < 3 || INN.textBox.Text.Length < 1 || !Subject.IntCorrect(INN.textBox.Text) || OECVED.textBox.Text.Length < 1 || !Subject.DateCorrect(DATEREGIST.textBox.Text))
 			{
-				for (int X = 1; X <= 68; X++)
+				for (int X = 0; X <= 65; X++)
 				{
-					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 10) * 35;
+					var l = Math.Sin(X * 1.1) * Math.Pow(Math.E, -X / 10) * 30;
 					buttonOK.Location = new Point(buttonOK.Location.X + Convert.ToInt32(l), buttonOK.Location.Y);
 					buttonOK.Update();
 					Thread.Sleep(delay);
