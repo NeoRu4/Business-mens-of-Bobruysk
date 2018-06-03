@@ -55,11 +55,14 @@ namespace License_Generator
 					var dto = new LicenseDto();
 					dto.LicenseeName = textBox2.Text;
 					dto.ValidUntil = dateTimePicker1.Value;
-
+					dto.AllowedFeatures = new List<string>();
 					foreach (var val in textBox1.Text.Split(','))
 						dto.AllowedFeatures.Add(val.Trim());
 
 					License.CreateLicenseFile(dto, saveFileDialog1.FileName);
+
+					MessageBox.Show("Лицензия создана:"+ saveFileDialog1.FileName);
+
 				}
 			}
 		}
@@ -71,13 +74,13 @@ namespace License_Generator
 
 		private void textBox2_TextChanged(object sender, EventArgs e)
 		{
-			if (textBox1.Text.Length > 2 && textBox2.Text.Length > 2 && License != null) 
+			if (textBox1.Text.Length > 1 && textBox2.Text.Length > 1 && License != null) 
 					button2.Enabled = true;
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
-			if (textBox1.Text.Length > 2 && textBox2.Text.Length > 2 && License!=null)
+			if (textBox1.Text.Length > 1 && textBox2.Text.Length > 1 && License != null)
 				button2.Enabled = true;
 		}
 

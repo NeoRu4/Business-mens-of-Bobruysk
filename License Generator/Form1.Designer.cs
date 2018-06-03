@@ -43,7 +43,7 @@
 			// 
 			this.button1.Location = new System.Drawing.Point(12, 12);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(261, 34);
+			this.button1.Size = new System.Drawing.Size(265, 34);
 			this.button1.TabIndex = 0;
 			this.button1.Text = "создать пару";
 			this.button1.UseVisualStyleBackColor = true;
@@ -53,7 +53,7 @@
 			// 
 			this.button2.Location = new System.Drawing.Point(12, 237);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(261, 56);
+			this.button2.Size = new System.Drawing.Size(265, 56);
 			this.button2.TabIndex = 1;
 			this.button2.Text = "подписать лицензию";
 			this.button2.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
 			// 
 			this.textBox1.Location = new System.Drawing.Point(12, 211);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(261, 20);
+			this.textBox1.Size = new System.Drawing.Size(265, 20);
 			this.textBox1.TabIndex = 2;
 			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
@@ -71,7 +71,7 @@
 			// 
 			this.textBox2.Location = new System.Drawing.Point(12, 118);
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(261, 20);
+			this.textBox2.Size = new System.Drawing.Size(265, 20);
 			this.textBox2.TabIndex = 3;
 			this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
 			// 
@@ -79,7 +79,7 @@
 			// 
 			this.dateTimePicker1.Location = new System.Drawing.Point(12, 157);
 			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(261, 20);
+			this.dateTimePicker1.Size = new System.Drawing.Size(265, 20);
 			this.dateTimePicker1.TabIndex = 4;
 			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
 			// 
@@ -126,7 +126,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(283, 305);
+			this.ClientSize = new System.Drawing.Size(289, 321);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -137,6 +137,8 @@
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "Form1";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "License Generator";

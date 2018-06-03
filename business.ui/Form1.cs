@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using License_Generator;
 
 namespace business.ui
 {
 	public partial class Form1 : Form
 	{
+		LicenseLib license;
 		public string CurFileName = "base.bu";
 		public List<Subject> businesMens;
 		public int countElements { get; private set; }
@@ -44,6 +46,24 @@ namespace business.ui
 			listView1.Columns.Add("4", "налог", 130);
 			button3.Enabled = false;
 
+			OpenFileDialog licenseDialog = new OpenFileDialog();
+			licenseDialog.Filter = "Файл лицензии (*.xml)|*.xml";
+			licenseDialog.Title = "Выбери файл лицензии";
+
+			// я не был ни на одной лекции, думаю что так))
+			license = new LicenseLib(Properties.Resources._private,Properties.Resources._public);
+
+			if (!File.Exists(Properties.Settings.Default.LicenseFilePath) || !license.TryLoadLicense(Properties.Settings.Default.LicenseFilePath))
+			{
+				if (licenseDialog.ShowDialog() == DialogResult.OK)
+				{
+					Properties.Settings.Default.LicenseFilePath = licenseDialog.FileName;
+					Properties.Settings.Default.Save();
+					license.TryLoadLicense(Properties.Settings.Default.LicenseFilePath);
+				}
+			}
+		
+			panel1.Enabled = license.HasLicense;
 		}
 
 		private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -126,6 +146,18 @@ namespace business.ui
 		private void label1_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			var id = listView1.SelectedItems[0].Index;
+			listView1.Items[id].Remove();
+			businesMens[id] = null;
 		}
 	}
 }
