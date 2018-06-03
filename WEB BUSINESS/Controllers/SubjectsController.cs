@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using WEB_BUSINESS.Models;
 using business;
+using System.IO;
+using System.Web.Hosting;
+using OfficeOpenXml;
 
 namespace WEB_BUSINESS.Controllers
 {
@@ -143,6 +146,34 @@ namespace WEB_BUSINESS.Controllers
 
 			return RedirectToAction("Index");
 		}
+
+
+		public ActionResult DownloadXls()
+		{
+			var ms = new MemoryStream();
+			FileInfo newFile = new FileInfo(HostingEnvironment.ApplicationPhysicalPath + @"\temp");
+			using (ExcelPackage Package = new ExcelPackage(newFile))
+			{
+
+				var worksheet = Package.Workbook.Worksheets.Add("Список ИП");
+
+				var i = 1;
+				foreach (var g in db.Subjects)
+				{
+					worksheet.Cells[i, 1].Value = g.Name;
+					worksheet.Cells[i, 2].Value = g.StartDate.ToString();
+					worksheet.Cells[i, 3].Value = g.TaxType.ToString();
+					worksheet.Cells[i, 4].Value = g.ITaxNum.ToString();
+					i++;
+				}
+
+				// Заполнение файла Excel вышими данными
+				Package.SaveAs(ms);
+			}
+
+			return File(ms.ToArray(), "application/ooxml", (newFile.Name).Replace(" ", "_") + ".xlsx");
+		}
+
 
 	}
 }

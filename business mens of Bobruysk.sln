@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "business", "business\busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB BUSINESS", "WEB BUSINESS\WEB BUSINESS.csproj", "{E427E5C6-E8B0-4102-8507-0C1B3C9ECF57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "License Generator", "License Generator\License Generator.csproj", "{9D5DE106-CF18-4FD7-830C-A1CD912173F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E427E5C6-E8B0-4102-8507-0C1B3C9ECF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E427E5C6-E8B0-4102-8507-0C1B3C9ECF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E427E5C6-E8B0-4102-8507-0C1B3C9ECF57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D5DE106-CF18-4FD7-830C-A1CD912173F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D5DE106-CF18-4FD7-830C-A1CD912173F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D5DE106-CF18-4FD7-830C-A1CD912173F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D5DE106-CF18-4FD7-830C-A1CD912173F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

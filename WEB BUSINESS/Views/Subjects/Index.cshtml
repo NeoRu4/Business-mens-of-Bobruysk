@@ -5,16 +5,28 @@
 }
 
 <h2>Index</h2>
-<div>
-    @using (Html.BeginForm("Upload", "Index", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <input type="file" name="file" /> 
-        <input type="submit" name="Submit" id="Submit" value="Загрузить" />
-    }
+
+<div style="display:inline;">
+    <div style="float:left; margin-left:20%;">
+        @using (Html.BeginForm("Upload", "Subjects", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" />
+            <input type="submit" name="Submit" id="Submit" value="Загрузить" />
+        }
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+
+    <div style="float:right; margin-right:20%">
+        @using (Html.BeginForm("DownloadXls", "Subjects"))
+        {
+            <input type="submit" name="Submit" id="Submit" value="Скачать EXCEL" />
+        }
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+
 <table class="table">
     <tr>
         <th>
